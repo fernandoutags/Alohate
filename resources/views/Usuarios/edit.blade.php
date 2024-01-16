@@ -106,7 +106,7 @@
                             <option value="activo" {{"activo" == $users[0]->Estatus_col ? 'selected': ''}}>Activo</option>
                             <option value="inactivo" {{"inactivo" == $users[0]->Estatus_col ? 'selected': ''}}>Inactivo</option>
                         </select>
-                        <div class="valid-feedback">
+                        <div class="valid-feedback"> 
                             Looks good!
                         </div>
                         <div class="invalid-feedback">
