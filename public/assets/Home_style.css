@@ -1,0 +1,29 @@
+*{
+    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.padre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 20rem;
+    margin-top: 15px;
+    
+    
+}
+.card-title{
+    text-align: center;
+}
+
+.card-footer{
+    text-align: right;
+}
+
+.card-link{
+    text-decoration: none;
+}
+
+.card-body{
+    border-top: 1px solid #8d8d8d;
+}

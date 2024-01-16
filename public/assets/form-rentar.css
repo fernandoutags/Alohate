@@ -1,0 +1,2257 @@
+:root {
+    --primary-color: rgb(11, 78, 179);
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  
+  #despliegue_sinservicio{
+    cursor: pointer;
+  }
+  #ocultar_sinservicio{
+    cursor: pointer;
+    display: none;
+    
+  }
+  #detalle_sinservicio{
+    display: none;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*estilos que ayudan a la vista de agregar reservacion donde esconde el contenido de los divs para seleccionar locacion, hab, depa*/
+  #esc_locacion{ display: none;}
+  #esc_hab{display: none;}
+  #esc_depa{ display: none;}
+  
+  .linea {
+    border-top: 1px solid black;
+    height: 2px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+  }
+  #despliegue_cliente_reserva{
+    cursor: pointer;
+  }
+  #ocultar_cliente_reserva{
+    cursor: pointer;
+    display: none;
+    
+  }
+  #detalle_cliente_reserva{
+    display: none;
+  }
+  .icono_margen{
+    margin: 5px;
+    padding: 5px;
+    color: #ff1900;
+    border: 1px solid #000000;
+    border-radius: 50px;
+  }
+  
+  .acomodo_c{
+    float: left;
+    
+  }
+  /*aqui terminan los estilos de agregar reservacion*/
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*para dispositivos moviles*/
+  @media screen and (max-width: 700px) {
+  
+    body {
+        font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+    
+      /* Global Stylings */
+      label {
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+      
+      select {
+        display: block;
+        width: 70%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+    
+      input {
+        display: block;
+        width: 70%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+      
+      .width-50 {
+        width: 40%;
+      }
+      
+      .ml-auto {
+        margin-left: auto;
+      }
+      
+      .text-center {
+        text-align: center;
+      }
+      
+      /* Progressbar */
+      .progressbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        counter-reset: step;
+        margin: 2rem 0 4rem;
+      }
+      
+      .progressbar::before,
+      .progress {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        background-color: #dcdcdc;
+        z-index: -1;
+      }
+      
+      .progress {
+        background-color: var(--primary-color);
+        width: 0%;
+        transition: 0.5s;
+      }
+      
+      .progress-step {
+        width: 2.1875rem;
+        height: 2.1875rem;
+        background-color: #dcdcdc;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .progress-step::before {
+        counter-increment: step;
+        content: counter(step);
+      }
+      
+      .progress-step::after {
+        content: attr(data-title);
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        font-size: 0.85rem;
+        color: #666;
+      }
+      
+      .progress-step-active {
+        background-color: var(--primary-color);
+        color: #f3f3f3;
+      }
+      
+      /* Form este es el que movere para el tamaño del div padre*/
+      .form {
+        width: 98%;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+      
+      
+      .form-step {
+        display: none;
+        transform-origin: top;
+        animation: animate 0.5s;
+    
+      }
+      
+      .form-step-active {
+        display: block;
+      }
+      
+      .input-group {
+        margin: 2rem 0;
+      }
+      
+      @keyframes animate {
+        from {
+          transform: scale(1, 0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1, 1);
+          opacity: 1;
+        }
+      }
+      
+      /* Buttons */
+      .btns-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .btn {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: darkcyan;
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_entera {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(102, 0, 139);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .boton_entera:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_secciones {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 125, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .boton_secciones:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+      .btn-continuar{
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 25, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-continuar:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_finalizar {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 0, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .boton_finalizar:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .subtitulo{
+        text-align: center;
+      }
+  
+  
+  /* diseño de los checksboxs */
+  
+  .tamano_icono{
+    width: 40px;
+    height: 40px;
+  }
+  
+  .centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  
+  
+  .option_item{
+    display: block;
+    position: relative;
+    width: 130px;
+    margin: 5px;
+  }
+  /* tamaño y color del recuadro */
+  .option_inner{
+    width: 100%;
+    height: 120%;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    text-align: center;
+    padding: 10px 5px;
+    cursor: pointer;
+    color: #585c68;
+    display: block;
+    border: 1px solid #a5a5a5;
+    position: relative;
+  }
+  /* tamaño y direccion del check */
+  .checkbox{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 1;
+    opacity: 0;
+  }
+  .icon{
+    margin-bottom: 5px;
+  }
+  /* tamaño de la letra del nombre */
+  
+  /* agrega accion de seleccionar y da colores al fondo y al estilo */
+  .option_item .checkbox:checked ~ .option_inner.seleccionar1 {
+    background-color: rgb(52, 138, 219);
+    border: 3px solid rgb(49, 50, 55);
+    color: white;
+    
+  }
+  
+  .option_item .checkbox:checked ~ .option_inner.seleccionar2 {
+    background-color: rgb(0, 180, 153);
+    border: 3px solid rgb(49, 50, 55);
+    color: white;
+    
+  }
+  
+  .option_item .checkbox:checked ~ .option_inner.seleccionar3 {
+    background-color: rgb(175, 49, 95);
+    border: 3px solid rgb(49, 50, 55);
+    color: white;
+  }
+       /* mostrar y ocultar contenido */
+       .subtitulo{
+        text-align: center;
+        border: 1px solid #a5a5a5;
+        border-radius: 10px;
+        margin: 10px;
+        font-size: 15px;
+      }
+  
+    #despliegue_cocina{
+      cursor: pointer;
+    }
+    #ocultar_cocina{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_cocina{
+      display: none;
+    }
+  
+    #despliegue_sinservicio{
+      cursor: pointer;
+    }
+    #ocultar_sinservicio{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_sinservicio{
+      display: none;
+    }
+    
+    
+    #despliegue_lavanderia{
+      cursor: pointer;
+    }
+    #ocultar_lavanderia{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_lavanderia{
+      display: none;
+    }
+  
+    #despliegue_otro_s{
+      cursor: pointer;
+    }
+    #ocultar_otro_s{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_otro_s{
+      display: none;
+    }
+  
+    #despliegue_estacionamiento{
+      cursor: pointer;
+    }
+    #ocultar_estacionamiento{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_estacionamiento{
+      display: none;
+    }
+    
+    #despliegue_añadirServicio{
+      cursor: pointer;
+    }
+    #ocultar_añadirServicio{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_añadirServicio{
+      display: none;
+    }
+  /* para mostrar una previsualizacion de imagen */
+  .container{
+    height: 250px;
+    width: 270px;
+  }
+  .container .wrapper{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper.active{
+    border: none;
+  }
+  .wrapper .image{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper .icon{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper .text{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper #cancel-btn i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper.active:hover #cancel-btn i{
+    display: block;
+  }
+  .wrapper #cancel-btn i:hover{
+    color: #e74c3c;
+  }
+  .wrapper .file-name{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper.active:hover .file-name{
+    display: block;
+  }
+  .container #custom-btn{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img1{
+    display: none;
+  }
+  
+  /* para mostrar una previsualizacion de imagen 2*/
+  .container2{
+    height: 250px;
+    width: 270px;
+  }
+  .container2 .wrapper2{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper2.active2{
+    border: none;
+  }
+  .wrapper2 .image2{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper2 .icon2{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper2 .text2{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper2 #cancel-btn2 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper2.active2:hover #cancel-btn2 i{
+    display: block;
+  }
+  .wrapper2 #cancel-btn2 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper2 .file-name2{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper2.active2:hover .file-name2{
+    display: block;
+  }
+  .container2 #custom-btn2{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img2{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 3*/
+  .container3{
+    height: 250px;
+    width: 270px;
+  }
+  .container3 .wrapper3{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper3.active3{
+    border: none;
+  }
+  .wrapper3 .image3{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper3 .icon3{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper3 .text3{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper3 #cancel-btn3 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper3.active3:hover #cancel-btn3 i{
+    display: block;
+  }
+  .wrapper3 #cancel-btn3 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper3 .file-name3{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper3.active3:hover .file-name3{
+    display: block;
+  }
+  .container3 #custom-btn3{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img3{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 4*/
+  .container4{
+    height: 250px;
+    width: 270px;
+  }
+  .container4 .wrapper4{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper4.active4{
+    border: none;
+  }
+  .wrapper4 .image4{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper4 .icon4{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper4 .text4{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper4 #cancel-btn4 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper4.active4:hover #cancel-btn4 i{
+    display: block;
+  }
+  .wrapper4 #cancel-btn4 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper4 .file-name4{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper4.active4:hover .file-name4{
+    display: block;
+  }
+  .container4 #custom-btn4{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img4{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 5*/
+  .container5{
+    height: 250px;
+    width: 270px;
+  }
+  .container5 .wrapper5{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper5.active5{
+    border: none;
+  }
+  .wrapper5 .image5{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper5 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper5 .icon5{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper5 .text5{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper5 #cancel-btn5 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper5.active5:hover #cancel-btn5 i{
+    display: block;
+  }
+  .wrapper5 #cancel-btn5 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper5 .file-name5{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper5.active5:hover .file-name5{
+    display: block;
+  }
+  .container5 #custom-btn5{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img5{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 6*/
+  .container6{
+    height: 250px;
+    width: 270px;
+  }
+  .container6 .wrapper6{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper6.active6{
+    border: none;
+  }
+  .wrapper6 .image6{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper6 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper6 .icon6{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper6 .text6{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper6 #cancel-btn6 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper6.active6:hover #cancel-btn6 i{
+    display: block;
+  }
+  .wrapper6 #cancel-btn6 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper6 .file-name6{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper6.active6:hover .file-name6{
+    display: block;
+  }
+  .container6 #custom-btn6{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img6{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 7*/
+  .container7{
+    height: 250px;
+    width: 270px;
+  }
+  .container7 .wrapper7{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper7.active7{
+    border: none;
+  }
+  .wrapper7 .image7{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper7 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper7 .icon7{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper7 .text7{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper7 #cancel-btn7 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper7.active7:hover #cancel-btn7 i{
+    display: block;
+  }
+  .wrapper7 #cancel-btn7 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper7 .file-name7{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper7.active7:hover .file-name7{
+    display: block;
+  }
+  .container7 #custom-btn7{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img7{
+    display: none;
+  }
+  
+  
+  .formulario_1{
+    display: none;
+  }
+  .formulario_2{
+    display: none;
+  }
+  
+  .titulo_central{
+    height: 40px;
+  }
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* para dispositivos de pc*/
+  @media screen and (min-width: 701px) {
+    body {
+        font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+    
+      /* Global Stylings */
+      label {
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+      
+      select {
+        display: block;
+        width: 70%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+    
+      input {
+        display: block;
+        width: 70%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+      
+      .width-50 {
+        width: 40%;
+      }
+      
+      .ml-auto {
+        margin-left: auto;
+      }
+      
+      .text-center {
+        text-align: center;
+      }
+      
+      /* Progressbar */
+      .progressbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        counter-reset: step;
+        margin: 2rem 0 4rem;
+      }
+      
+      .progressbar::before,
+      .progress {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        background-color: #dcdcdc;
+        z-index: -1;
+      }
+      
+      .progress {
+        background-color: var(--primary-color);
+        width: 0%;
+        transition: 0.5s;
+      }
+      
+      .progress-step {
+        width: 2.1875rem;
+        height: 2.1875rem;
+        background-color: #dcdcdc;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .progress-step::before {
+        counter-increment: step;
+        content: counter(step);
+      }
+      
+      .progress-step::after {
+        content: attr(data-title);
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        font-size: 0.85rem;
+        color: #666;
+      }
+      
+      .progress-step-active {
+        background-color: var(--primary-color);
+        color: #f3f3f3;
+      }
+      
+      /* Form este es el que movere para el tamaño del div padre*/
+      .form {
+        width: clamp(430px, 60%, 700px);
+        margin: 0 auto;
+        border: 1px solid #a5a5a5;
+        border-radius: 2.5rem;
+        padding: 1.5rem;
+      }
+      
+      .form-step {
+        display: none;
+        transform-origin: top;
+        animation: animate 0.5s;
+    
+      }
+      
+      .form-step-active {
+        display: block;
+      }
+      
+      .input-group {
+        margin: 2rem 0;
+      }
+      
+      @keyframes animate {
+        from {
+          transform: scale(1, 0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1, 1);
+          opacity: 1;
+        }
+      }
+      
+      /* Buttons */
+      .btns-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .btn {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: darkcyan;
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_entera {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(102, 0, 139);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .boton_entera:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_secciones {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 125, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .boton_secciones:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+      .btn-continuar{
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 25, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-continuar:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+      .boton_finalizar {
+        padding: 0.75rem;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(139, 0, 0);
+        color: #f3f3f3;
+        text-align: center;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .boton_finalizar:hover {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+      }
+  
+  /* diseño de los checksboxs */
+  
+  .tamano_icono{
+        width: 40px;
+        height: 40px;
+      }
+  
+      .centrar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      } 
+  
+  
+  
+      .option_item{
+        display: block;
+        position: relative;
+        width: 130px;
+        margin: 5px;
+  
+        
+      }
+  /* tamaño y color del recuadro */
+      .option_inner{
+        width: 100%;
+        height: 120%;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        text-align: center;
+        padding: 10px 5px;
+        cursor: pointer;
+        color: #585c68;
+        display: block;
+        border: 1px solid #a5a5a5;
+        position: relative;
+      }
+  /* tamaño y direccion del check */
+      .checkbox{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        z-index: 1;
+        opacity: 0;
+      }
+      .icon{
+        margin-bottom: 5px;
+      }
+  /* tamaño de la letra del nombre */
+     
+  /* agrega accion de seleccionar y da colores al fondo y al estilo */
+      .option_item .checkbox:checked ~ .option_inner.seleccionar1 {
+        background-color: rgb(52, 138, 219);
+        border: 3px solid rgb(49, 50, 55);
+        color: white;
+        
+      }
+  
+      .option_item .checkbox:checked ~ .option_inner.seleccionar2 {
+        background-color: rgb(0, 180, 153);
+        border: 3px solid rgb(49, 50, 55);
+        color: white;
+        
+      }
+  
+      .option_item .checkbox:checked ~ .option_inner.seleccionar3 {
+        background-color: rgb(175, 49, 95);
+        border: 3px solid rgb(49, 50, 55);
+        color: white;
+      }
+  
+        /* mostrar y ocultar contenido */
+        .subtitulo{
+          text-align: center;
+          border: 1px solid #a5a5a5;
+          border-radius: 10px;
+          margin: 10px;
+          font-size: 18px;
+        }
+  /* cocina */
+      #despliegue_cocina{
+        cursor: pointer;
+        transition: all 2s;
+      }
+      #ocultar_cocina{
+        cursor: pointer;
+        display: none;
+        transition: all 2s;
+      }
+      #detalle_cocina{
+        display: none;
+        transition: all 2s;
+      }
+  
+      #despliegue_sinservicio{
+        cursor: pointer;
+      }
+      #ocultar_sinservicio{
+        cursor: pointer;
+        display: none;
+        
+      }
+      #detalle_sinservicio{
+        display: none;
+      }
+      
+  
+    /* lavanderia */
+      #despliegue_lavanderia{
+        cursor: pointer;
+      }
+      #ocultar_lavanderia{
+        cursor: pointer;
+        display: none;
+        
+      }
+      #detalle_lavanderia{
+        display: none;
+      }
+  
+    /* otros serv */
+    #despliegue_otro_s{
+      cursor: pointer;
+    }
+    #ocultar_otro_s{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_otro_s{
+      display: none;
+    }
+  
+      /* estacionamiento */
+    #despliegue_estacionamiento{
+      cursor: pointer;
+    }
+    #ocultar_estacionamiento{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_estacionamiento{
+      display: none;
+    }
+  
+    #despliegue_añadirServicio{
+      cursor: pointer;
+    }
+    #ocultar_añadirServicio{
+      cursor: pointer;
+      display: none;
+      
+    }
+    #detalle_añadirServicio{
+      display: none;
+    }
+  
+   /* para mostrar una previsualizacion de imagen */
+   .container{
+    height: 250px;
+    width: 330px;
+  }
+  .container .wrapper{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper.active{
+    border: none;
+  }
+  .wrapper .image{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper .icon{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper .text{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper #cancel-btn i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper.active:hover #cancel-btn i{
+    display: block;
+  }
+  .wrapper #cancel-btn i:hover{
+    color: #e74c3c;
+  }
+  .wrapper .file-name{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper.active:hover .file-name{
+    display: block;
+  }
+  .container #custom-btn{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img1{
+    display: none;
+  }
+  
+  
+  
+  
+  /* para mostrar una previsualizacion de imagen 2*/
+  .container2{
+    height: 250px;
+    width: 330px;
+  }
+  .container2 .wrapper2{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper2.active2{
+    border: none;
+  }
+  .wrapper2 .image2{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper2 .icon2{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper2 .text2{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper2 #cancel-btn2 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper2.active2:hover #cancel-btn2 i{
+    display: block;
+  }
+  .wrapper2 #cancel-btn2 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper2 .file-name2{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper2.active2:hover .file-name2{
+    display: block;
+  }
+  .container2 #custom-btn2{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img2{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 3*/
+  .container3{
+    height: 250px;
+    width: 330px;
+  }
+  .container3 .wrapper3{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper3.active3{
+    border: none;
+  }
+  .wrapper3 .image3{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper3 .icon3{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper3 .text3{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper3 #cancel-btn3 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper3.active3:hover #cancel-btn3 i{
+    display: block;
+  }
+  .wrapper3 #cancel-btn3 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper3 .file-name3{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper3.active3:hover .file-name3{
+    display: block;
+  }
+  .container3 #custom-btn3{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img3{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 4*/
+  .container4{
+    height: 250px;
+    width: 330px;
+  }
+  .container4 .wrapper4{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper4.active4{
+    border: none;
+  }
+  .wrapper4 .image4{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper4 .icon4{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper4 .text4{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper4 #cancel-btn4 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper4.active4:hover #cancel-btn4 i{
+    display: block;
+  }
+  .wrapper4 #cancel-btn4 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper4 .file-name4{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper4.active4:hover .file-name4{
+    display: block;
+  }
+  .container4 #custom-btn4{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img4{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 5*/
+  .container5{
+    height: 250px;
+    width: 330px;
+  }
+  .container5 .wrapper5{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper5.active5{
+    border: none;
+  }
+  .wrapper5 .image5{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper5 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper5 .icon5{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper5 .text5{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper5 #cancel-btn5 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper5.active5:hover #cancel-btn5 i{
+    display: block;
+  }
+  .wrapper5 #cancel-btn5 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper5 .file-name5{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper5.active5:hover .file-name5{
+    display: block;
+  }
+  .container5 #custom-btn5{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img5{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 6*/
+  .container6{
+    height: 250px;
+    width: 330px;
+  }
+  .container6 .wrapper6{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper6.active6{
+    border: none;
+  }
+  .wrapper6 .image6{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper6 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper6 .icon6{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper6 .text6{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper6 #cancel-btn6 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper6.active6:hover #cancel-btn6 i{
+    display: block;
+  }
+  .wrapper6 #cancel-btn6 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper6 .file-name6{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper6.active6:hover .file-name6{
+    display: block;
+  }
+  .container6 #custom-btn6{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  #img6{
+    display: none;
+  }
+  
+  
+  /* para mostrar una previsualizacion de imagen 7*/
+  .container7{
+    height: 250px;
+    width: 270px;
+  }
+  .container7 .wrapper7{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .wrapper7.active7{
+    border: none;
+  }
+  .wrapper7 .image7{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper7 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .wrapper7 .icon7{
+    font-size: 50px;
+    color: #9658fe;
+    text-align: center;
+  }
+  .wrapper7 .text7{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5B5B7B;
+  }
+  .wrapper7 #cancel-btn7 i{
+    position: absolute;
+    font-size: 17px;
+    right: 15px;
+    top: 15px;
+    color: crimson;
+    cursor: pointer;
+    display: none;
+  
+  }
+  .wrapper7.active7:hover #cancel-btn7 i{
+    display: block;
+  }
+  .wrapper7 #cancel-btn7 i:hover{
+    color: #e74c3c;
+  }
+  .wrapper7 .file-name7{
+    position: absolute;
+    bottom: 0px;
+    background-color: #c2cdda;
+    width: 100%;
+    color: #000000;
+    padding: 8px 0;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+  }
+  .wrapper7.active7:hover .file-name7{
+    display: block;
+  }
+  .container7 #custom-btn7{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    text-align: center;
+        
+  }
+  
+  #img7{
+    display: none;
+  }
+  
+  
+  .formulario_1{
+    display: none;
+  }
+  .formulario_2{
+    display: none;
+  }
+  
+  .titulo{
+    font-weight: 700;
+    font-size: 25px;
+  }
+  .sub{
+    font-weight: 500;
+    font-size: 20px;
+  }
+  
+  .titulo_central{
+    height: 40px;
+  }
+  
+  /*este le da acomodo a los checks de escoger que cosa quiere reservar de la vista de agregar una reservacion*/
+  .listado{
+    font-size: 18px;
+    float: left;
+    margin: 4px;
+  }
+  }
+  
+  .cuadrito{
+    display: none;
+  }

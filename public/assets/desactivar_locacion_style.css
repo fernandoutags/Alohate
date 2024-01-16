@@ -1,0 +1,37 @@
+*{ font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+
+.titulo{
+font-weight: 500;
+margin: 20px;
+font-size: 22px;
+
+}
+
+.cuerpo{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  .boton{
+    width: 170px;
+  }
+
+  /* seccion principal */
+.seccion_padre_b{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
+  
+}
+.seccion_hijo_t{
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #7b7b7b;
+  border-radius: 5px;
+  margin: 10px;
+} 
